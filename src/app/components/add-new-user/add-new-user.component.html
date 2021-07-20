@@ -1,0 +1,60 @@
+<!--<p class="text-center">add new user</p>
+<form class="col-lg-6 offset-lg-3"  [formGroup]="myvalidation" (ngSubmit)="Add()">
+    <div class="form-group row mt-3">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text" #name  formControlName="name" [(ngModel)]="users.name"   name="Name" id="staticEmail" class="form-control" placeholder="name" aria-describedby="helpId">
+        <small *ngIf="!getnamevalid" id="helpId" class="text-muted">Name must be more than 3 letters</small>
+        
+      </div>
+     
+    </div>
+    <div class="form-group row mt-3">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input #email type="Email" formControlName="email"  [(ngModel)]="users.email"   placeholder="email" class="form-control" id="inputPassword" >
+      </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="inputphone" formControlName="name" class="col-sm-2 col-form-label" >Phone</label>
+        <div class="col-sm-10">
+          <input  #phone type="Phone" formControlName="name"  [(ngModel)]="users.phone"     placeholder="phone" class="form-control" id="inputphone" >
+        </div>
+      </div>
+      <div class="form-group row w-50 mt-3" style="margin-left:35% !important;">
+        <button type="submit"   class="btn btn-danger">Submit</button>
+      </div>
+  </form>-->
+  <p class="text-center">add new user</p>
+  <form #frm="ngForm" class="col-lg-6 offset-lg-3" (ngSubmit)="Add()">
+      <div class="form-group row mt-3">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" #name="ngModel" [(ngModel)]="users.name" required minlength="4" name="Name" id="staticEmail" class="form-control">
+          <small id="helpId" [hidden]="name.valid || name.pristine" class="text-muted">Name must be more than 3 letters</small>
+        </div>
+  
+      </div>
+      <div class="form-group row mt-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input #email="ngModel" type="Email" [(ngModel)]="users.email" name="email" required placeholder="email" class="form-control" id="inputPassword"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
+          <small id="helpId" [hidden]="email.valid || email.pristine ||email.untouched" class="text-muted">Email is required</small>
+        </div>
+      </div>
+  
+      <div class="form-group row mt-3">
+          <label for="inputphone" class="col-sm-2 col-form-label" >Phone</label>
+          <div class="col-sm-10">
+            <input #phone="ngModel" required type="Phone" [(ngModel)]="users.phone" name="phone" placeholder="phone" class="form-control" id="inputphone" >
+          </div>
+        </div>
+  
+        <div class="form-group row w-50 mt-3" style="margin-left:35% !important;">
+          <button [disabled]="frm.invalid" type="submit" class="btn btn-danger">Submit</button>
+        </div>
+    </form>
+
+
+

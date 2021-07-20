@@ -1,0 +1,38 @@
+<div>
+    <a class="btn btn-info mb-4" routerLink="adduser">Add users</a>
+</div>
+<table class="table bg-dark text-light table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th class="align-center">Delete</th>
+            <th class="align-center">Edit</th>
+            <th class="align-center">details</th>
+            
+        </tr>
+    </thead>
+    <tbody class="bg-light text-dark">
+        <tr *ngFor="let u of users">
+            <td #name>{{u.id}}</td>
+            <td>{{u.name}}</td>
+            <td>{{u.phone}}</td>
+            <td>{{u.email}}</td>
+            <td>
+                <a class="btn btn-info"  (click)="delete(u.id)">Delete</a>
+                
+            </td>
+            <td>
+                <a class="btn btn-danger" routerLink="edit/{{u.id}}">Edit</a>
+                
+            </td>
+            <td>
+                <a class="btn btn-primary" routerLink="Details/{{u.id}}">Details</a>
+            </td>
+           
+        </tr>
+    </tbody>
+
+</table>
